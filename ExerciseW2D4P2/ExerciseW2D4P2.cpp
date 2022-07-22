@@ -51,12 +51,18 @@ public:
 	bool isDrivable() {
 		return m_driveable;
 	}
+	virtual void visual() {
+		cout << "There is no visual for this vehicle." << endl;
+	};
 };
 
 //Subclass Boat
 
 class Boat :public Vehicle {
 public:
+	Boat():Vehicle() {
+
+	}
 	 void drive(int miles) override {
 		 if (miles > m_gas) {
 			 cout << "You cannot do that. You dont have enough gas. You only have " << m_gas << "gallons of gas." << endl;
@@ -73,11 +79,22 @@ public:
 			 m_driveable = false;
 		 }
 	}
+	 void visual() override {
+		 cout << "                   v  ~.      v"<< endl;
+		 cout << "          v           /|" << endl;
+		 cout << "                     / |          v" << endl;
+		 cout << "              v     /__|__" << endl;
+		 cout << "                  \\--------/" << endl;
+		 cout << "~~~~~~~~~~~~~~~~~~~`~~~~~~'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+	 }
 };
 
 //Subclass Car
 class Car :public Vehicle {
 public:
+	Car() {
+
+	}
 	void drive(int miles) override {
 		if (miles > m_gas) {
 			cout << "You cannot do that. You dont have enough gas. You only have " << m_gas << "gallons of gas." << endl;
@@ -95,11 +112,22 @@ public:
 			m_driveable = false;
 		}
 	}
+	void visual() override {
+		cout << "        _______" << endl;
+		cout << "       //  ||\\ \\" << endl;
+		cout << " _____//___||_\\ \\___" << endl;
+		cout << " )  _          _    \\" << endl;
+		cout << " |_/ \\________/ \\___|" << endl;
+		cout << "___\\_/________\\_/______" << endl;
+	}
 };
 
 //Subclass Airplane
 class Airplane :public Vehicle {
 public:
+	Airplane() {
+
+	}
 	void drive(int miles) override {
 		if (miles > m_gas) {
 			cout << "You cannot do that. You dont have enough gas. You only have " << m_gas << "gallons of gas." << endl;
@@ -117,24 +145,33 @@ public:
 		}
 
 	}
-};
+	void visual() override {
+		cout << "   ____       _" << endl;
+		cout << " |__\\_\\_o,___/ \\" << endl;
+		cout << "([___\\_\\_____-\\'" << endl;
+		cout << " | o'" << endl;
 
-void gasOrDrive(Vehicle vehicle);
+	}
+};
 
 int main() {
 
 	cout << "Hello Traveler! For keeping me company for so long. I want to show you my fun toys." << endl;
 	cout << "Unknown Vehicle ";
 	Vehicle vehicle;
+	vehicle.visual();
 	cout << '\n';
 	cout << "Car ";
 	Car car;
+	car.visual();
 	cout << '\n';
 	cout << "Boat ";
 	Boat boat;
+	boat.visual();
 	cout << '\n';
 	cout << "Airplane ";
 	Airplane plane;
+	plane.visual();
 	cout << '\n';
 	cout << "I Will drive my Unknown vehicle for 3 miles." << endl;
 	vehicle.drive(3);
@@ -147,5 +184,6 @@ int main() {
 	cout << '\n';
 	cout << "I Will drive my plane for 0 miles." << endl;
 	plane.drive(0);
+	cout<<'\n'<<endl;
 
 }
